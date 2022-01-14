@@ -12,62 +12,89 @@
     <div class="wrapper">
 
         <div class="header">
-            <h1>
-                <a href="index.html">                
-                    Sajaukto burtu spēle
-                </a>
-            </h1>
+            <h3>
+                              
+         Sajaukto burtu spēle
+               
+            </h3>
 
            <ul>
                <li>
-                   <a href="spele.html">
-                   Spēle
+                   <a href="#spele">Spēle
+                </a>
+                </li>
+              
+               <li>
+                <a href="#noteikumi">
+                   Noteikumi
                 </a>
                 </li>
                <li>
-                <a href="pspele.html">
-                   Pielāgotā Spēle
+                <a href="#top">
+                   Rezultāti
                 </a>
                 </li>
-               <li>
-                <a href="top.html">
-                   Tops
-                </a>
-                </li>
-               <li>
-                <a href="top.html">
-                   Par autoru
-                </a>
-                </li>
+                <a href="#kontakti">
+                    Kontakti
+                 </a>
+                 </li>
            </ul> 
 
         </div><!--beidzās header-->
 
         <div class="content">
-            <p>Noteikumu teksts</p>
-
-
-            <div class="game">
-                <div class="block"></div>
-                <div class="block"></div>
-                <div class="block"></div>
-                <div class="block"></div>
-                <div class="block"></div>
-
-            <div class="po_ti">
-                <p><h6>Punkti</h6></p>
-                <div class="point"></div>
-                <p><h6>Spēles laiks</h6></p>
-                <div class="time"></div>
-            </div>
-                
-
-            </div><!--beidzās game-->
-        </div><!--beidzās content-->
+            <a name=noteikumi></a>
+            <h2>Noteikumi</h2>
+            <p>Spēles sākumā jāizvēlas burtu skaits vārdā.</p>
+            <p>Par garāku vārdu salikšanu var iegūt vairāk punktu.</p>
+            <p>Jo vairāk vārdu izdosies salikt 30 sekunžu laikā, jo vairāk punktus iegūsiet!</p>
+            <p>Lai saliktu vārdu, burtu kartītes ar peli jāpārvieto un jāsaliek rindā pareizā secībā.</p>
+          </div>
+          <div class="content">
+            <a name=spele></a>
+            <form >
+             <input type="number" min="4" max="7"  value="4">
+             <input type="button" value="Sākt spēli" >
+             <label style="margin:25px;" id="laiks">laiks = 30 s</label>
+             <label style="margin:25px;" id="punkti"></label>
+            </form>
+        </div>
+          <div class="content">
+              <a name=top></a>
+          <h2>
+              Rezultāti
+            </h2>
+         </div>
+        <div class="content">
+            <a name=kontakti></a>
+          <h2>Par spēli</h2>
+          <p>Spēles vietne ir izveidota STARTIT projekta organizēto skolotāju mācību laikā.</p>
+                  </div><!--beidzās content-->
 
     </div><!--beidzās wrapper-->
 
+    <script>
 
 
+let vards
+let laiks
+let rezultats
+
+let vards2=[["ALUS", "KAZA", "ZAĻŠ"]
+            ["NAZIS", "BIETE", "BORTS"]
+            ["AKORDS", "AUGLIS", "CIRVIS"]
+            ["ETANOLS", "CITRONS", "GRUZIJA"]]
+
+    function laiksiet(laiks){}        
+       
+    function sajaukt(vards){
+    for(let i=0;i<vards2.length;i++){
+        let j=Math.floor(Math.random()*vards2.length);  
+    }
+}
+
+    function kubini(){}
+
+    </script>
 </body>
 </html>

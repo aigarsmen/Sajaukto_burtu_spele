@@ -1,23 +1,29 @@
 .wrapper
 {
     background:rgb(196, 194, 194);
-    width:auto;			/* platums */
-    height: 500px;			/* augstums */
     border: 1px solid black;	/* rāmītis: biezums, veids, krāsa */
+    margin: 0;
+}
+.content{
+    margin: 20px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #58585a;
+ }
 
  
-}
-
-
-h1
+h3
 {
     text-align: center;
-    
+    color:#58585a  
 }
 
 ul
 {
-    text-align: center;
+    text-align: left;
 }
 
 
@@ -41,44 +47,7 @@ li
 
 
 
-.time
-{
     
-    
-    right: 0;
-    height: 20px;
-    width: 50px;
-    background: #f7f8fa;
-    border-style: groove;
-    position:absolute;
-    transform: translateX(-20%);
-    left: 53%;
-    transform: translateY(-50%);
-    top: 95%;
-
-
-
-
-}
-.point
-{
-    
-    right: 0;
-    height: 20px;
-    width: 50px;
-    background: #f7f8fa;
-    font-family: sans-serif;
-    text-align: center;
-    color: rgb(17, 16, 16); 
-    border-style: groove;
-    position:absolute;
-    transform: translateX(-40%);
-    left: 53%;
-    transform: translateY(-100%);
-    top: 75%;
-   
-
-}
 .block
 {
     display:inline-block;
