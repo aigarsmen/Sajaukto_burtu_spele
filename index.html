@@ -48,16 +48,21 @@
             <p>Spēles sākumā jāizvēlas burtu skaits vārdā.</p>
             <p>Par garāku vārdu salikšanu var iegūt vairāk punktu.</p>
             <p>Jo vairāk vārdu izdosies salikt 30 sekunžu laikā, jo vairāk punktus iegūsiet!</p>
-            <p>Lai saliktu vārdu, burtu kartītes ar peli jāpārvieto un jāsaliek rindā pareizā secībā.</p>
+            <p>Vārds jāieraksta lodziņā</p>
           </div>
+          <a name=spele></a>
           <div class="content">
-            <a name=spele></a>
+            
             <form >
-             <input type="number" min="4" max="7"  value="4">
-             <input type="button" value="Sākt spēli" >
-             <label style="margin:25px;" id="laiks">laiks = 30 s</label>
-             <label style="margin:25px;" id="punkti"></label>
+             <h3 class="redzams"></h3> <!--sajauktais vārds-->
+             <input type="teksts" class="neredz"><!--lauks vārda rakstīšanai-->
+             <input type="number" min="4" max="7"  value="4"><!--līmeņu izvēle-->
+             <button class="poga">Sākt spēli</button><!--poga spēles sākumam-->
+             <label style="margin:25px;" id="laiks">laiks = 30 s</label><!--laika skaitīšana-->
+             <label style="margin:25px;" id="punkti"></label><!--punkti-->
+             
             </form>
+            
         </div>
           <div class="content">
               <a name=top></a>
@@ -75,25 +80,62 @@
 
     <script>
 
+const redzmas = document.querySelector('.redzams'); //nosaku, atgriežu elementu
+const minēt = document.querySelector('input');
+const poga = document.querySelector('.poga');
 
-let vards
-let laiks
-let rezultats
 
-let vards2=[["ALUS", "KAZA", "ZAĻŠ"]
-            ["NAZIS", "BIETE", "BORTS"]
-            ["AKORDS", "AUGLIS", "CIRVIS"]
-            ["ETANOLS", "CITRONS", "GRUZIJA"]]
-
-    function laiksiet(laiks){}        
-       
-    function sajaukt(vards){
-    for(let i=0;i<vards2.length;i++){
-        let j=Math.floor(Math.random()*vards2.length);  
+let vards;
+//let laiks;
+//let rezultats;
+//let kubi;
+let spele = false;
+let jaunsVards = "";
+let tempWords = "";
+let vardi=["ALUS", "KAZA", "ZAĻŠ",
+            "NAZIS", "BIETE", "BORTS",
+            "AKORDS", "AUGLIS", "CIRVIS",
+            "ETANOLS", "CITRONS", "GRUZIJA"]
+            
+    poga.addEventListener('click', function() {
+    if (!spele) {
+        spele = true;
+        console.log('Sākt spēli!');
+        poga.innerHTML = 'pārbaudīt';
+        minēt.classList.toggle('neredz');//pārslēdz 
+        jaunsVards = izveidotjaunsVards();
+        tempWords = jaucVardu(jaunsVards.split("")).join("");
+        redzmas.innerHTML = `minēt vārdu: ${tempWords}`;
+    } else {
+        let inpVal = minēt.value;
+        if (inpVal === jaunsVards) {
+            spele = false;
+            redzmas.innerHTML = `Pareizi:  ${jaunsVards}`;
+            minēt.classList.toggle('hidden');//pārslēdz 
+            poga.innerHTML = 'spēlēt atkal';
+            minēt.value = "";
+        } else {
+            redzmas.innerHTML = `Nepareizi:  ${jaunsVards}`;
+        }
     }
+});
+
+const izveidotjaunsVards = () => {
+    const ranWords = Math.floor(Math.random() * vardi.length);
+    let wordsTemp = vardi[ranWords];
+    return wordsTemp;
 }
 
-    function kubini(){}
+const jaucVardu = (arg) => {
+    for (let i = arg.length - 1; i > 0; i--) {
+        let temp = arg[i];
+        let j = Math.floor(Math.random() * (i + 1));
+        arg[i] = arg[j];
+        arg[j] = temp;
+    }
+    return arg;
+}
+
 
     </script>
 </body>
