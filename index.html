@@ -89,6 +89,7 @@ let vards;
 //let laiks;
 //let rezultats;
 //let kubi;
+let n;
 let spele = false;
 let jaunsVards = "";
 let tempWords = "";
@@ -135,7 +136,28 @@ const jaucVardu = (arg) => {
     }
     return arg;
 }
+//šis nestrādā.!!!
+// function jaunsVards(){
+//     let r=n-5;
+//     let k=Math.floor(Math.random()*vardi[n-5].length);
+//     vards=vardi[r][k];
+//     let burti=jaucVardu(vards);
+//     izveidotjaunsVards(burti);
+//}
 
+
+
+//Šis arī nestrādā
+var laiks = 10;
+var downloadTimer = setInterval(function(){
+  if(laiks <= 0){
+    clearInterval(downloadTimer);
+    document.getElementById("laiks").innerHTML = "Finished";
+  } else {
+    document.getElementById("laiks").innerHTML = timeleft + " seconds remaining";
+  }
+  laiks -= 1;
+}, 1000);
 
     </script>
 </body>
