@@ -86,7 +86,8 @@ const poga = document.querySelector('.poga');
 
 
 let vards;
-//let laiks;
+let punkti;
+let laiks = 30;
 //let rezultats;
 //let kubi;
 let n;
@@ -97,6 +98,24 @@ let vardi=["ALUS", "KAZA", "ZAĻŠ",
             "NAZIS", "BIETE", "BORTS",
             "AKORDS", "AUGLIS", "CIRVIS",
             "ETANOLS", "CITRONS", "GRUZIJA"]
+function rezultati(speletajs, punkti){
+    let dict={punkti:punkti,vards:speletajs};
+    console.log(JSON.stringify(dict));
+    fetch('https://sajauktie.AigarsMendiks.repl.co/top/rezultati', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body:JSON.stringify(dict)
+    })
+      .then(res => res.json())
+      .then(data => {
+          document.getElementById("tabula").innerHTML = "Rezultātu tabula";
+          for(let i=0;i<data.length;i++){
+              let rinda=document.createElement("div");
+              rinda.innerHTML=data[i].punkti+" "+data[i].vards;
+              document.getElementById("tabula").appendChild(rinda);
+          }
+      });
+}            
             
     poga.addEventListener('click', function() {
     if (!spele) {
@@ -136,6 +155,16 @@ const jaucVardu = (arg) => {
     }
     return arg;
 }
+
+if( laiks == 0  )
+	{
+		console.log('Laiks beidzies')
+		alert('Apsveicam!  \nVardi:'+vardi+'  \nRezultats:'+punkti+' \n\nIeraksti sevi TOP tabulā');
+		document.location = 'top.html#'+vards+','+rezultāts
+		
+	}
+
+
 //šis nestrādā.!!!
 // function jaunsVards(){
 //     let r=n-5;
@@ -148,16 +177,16 @@ const jaucVardu = (arg) => {
 
 
 //Šis arī nestrādā
-var laiks = 10;
-var downloadTimer = setInterval(function(){
-  if(laiks <= 0){
-    clearInterval(downloadTimer);
-    document.getElementById("laiks").innerHTML = "Finished";
-  } else {
-    document.getElementById("laiks").innerHTML = timeleft + " seconds remaining";
-  }
-  laiks -= 1;
-}, 1000);
+// var laiks = 10;
+// var downloadTimer = setInterval(function(){
+//   if(laiks <= 0){
+//     clearInterval(downloadTimer);
+//     document.getElementById("laiks").innerHTML = "Finished";
+//   } else {
+//     document.getElementById("laiks").innerHTML = timeleft + " seconds remaining";
+//   }
+//   laiks -= 1;
+// }, 1000);
 
     </script>
 </body>
